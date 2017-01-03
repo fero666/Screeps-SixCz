@@ -2,7 +2,18 @@ var roleUpgrader = require('role.upgrader');
 
 module.exports = {
     // a function to run the logic for this role
-    run: function(creep) {
+    /** @param {Creep} creep */
+    run: function (creep) {
+        // if target is defined and creep is not in target room
+        if (creep.memory.target != undefined && creep.room.name != creep.memory.target) {
+            // find exit to target room
+            var exit = creep.room.findExitTo(creep.memory.target);
+            // move to exit
+            creep.moveTo(creep.pos.findClosestByRange(exit));
+            // return the function to not do anything else
+            return;
+        }
+
         // if creep is trying to complete a constructionSite but has no energy left
         if (creep.memory.working == true && creep.carry.energy == 0) {
             // switch state
@@ -32,15 +43,9 @@ module.exports = {
                 roleUpgrader.run(creep);
             }
         }
-        // if creep is supposed to harvest energy from source
+        // if creep is supposed to get energy
         else {
-            // find closest source
-            var source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
-            // try to harvest energy, if the source is not in range
-            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                // move towards the source
-                creep.moveTo(source);
-            }
+            creep.getEnergy(true, true);
         }
     }
 };

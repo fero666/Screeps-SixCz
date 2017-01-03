@@ -1,7 +1,13 @@
+// FlagDefend = pozice pro defendry;
+// FlagAttack = pozice pro utok;
+// Kdyz je 'target' (místnost napø. W51N24) 
+// napsán v memory creepa tak se bude pohybovat v této místnosti;
 // import modules
 require('prototype.creep');
 require('prototype.tower');
 require('prototype.spawn');
+
+global.TARGET = '0'; //moje
 
 module.exports.loop = function() {
     // check for memory entries of died creeps by iterating over Memory.creeps

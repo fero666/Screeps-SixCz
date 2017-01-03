@@ -1,4 +1,4 @@
-var listOfRoles = ['harvester', 'lorry', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer'];
+var listOfRoles = ['harvester', 'lorry', 'claimer', 'upgrader', 'repairer', 'builder', 'wallRepairer', 'swordman', 'defender']; // moje
 
 // create a new function for StructureSpawn
 StructureSpawn.prototype.spawnCreepsIfNecessary =
@@ -188,4 +188,42 @@ StructureSpawn.prototype.createLorry =
 
         // create creep with the created body and the role 'lorry'
         return this.createCreep(body, undefined, { role: 'lorry', working: false });
+    };
+
+// create a new function for StructureSpawn //moje
+StructureSpawn.prototype.createSwordman =
+    function (energy) {
+        // create a body 
+        var numberOfParts = Math.floor(energy / 180);
+        var body = [];
+		for (let i = 0; i < numberOfParts; i++) {
+            body.push(ATTACK);
+        for (let i = 0; i < numberOfParts * 5; i++) {
+            body.push(TOUGH);
+        }
+        for (let i = 0; i < numberOfParts; i++) {
+            body.push(MOVE);
+        }
+
+        // create creep with the created body and the role 'swordman'
+        return this.createCreep(body, undefined, { role: 'swordman', target: TARGET});
+    };
+	
+// create a new function for StructureSpawn //moje
+StructureSpawn.prototype.createDefender =
+    function (energy) {
+        // create a body 
+        var numberOfParts = Math.floor(energy / 180);
+        var body = [];
+		for (let i = 0; i < numberOfParts; i++) {
+            body.push(ATTACK);
+        for (let i = 0; i < numberOfParts * 5; i++) {
+            body.push(TOUGH);
+        }
+        for (let i = 0; i < numberOfParts; i++) {
+            body.push(MOVE);
+        }
+
+        // create creep with the created body and the role 'defender'
+        return this.createCreep(body, undefined, { role: 'defender'});
     };

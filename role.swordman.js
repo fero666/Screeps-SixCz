@@ -21,7 +21,7 @@ module.exports = {
                // var exit = creep.room.findExitTo(creep.memory.target);
                 // and move to exit
                // creep.moveTo(creep.pos.findClosestByRange(exit));
-                creep.moveTo(Game.flags.Flag2);
+                creep.moveTo(Game.flags.FlagAttack);
             }
         }
            

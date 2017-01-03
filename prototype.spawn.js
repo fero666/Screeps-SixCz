@@ -21,7 +21,7 @@ module.exports = function() {
 
     // create a new function for StructureSpawn
     StructureSpawn.prototype.createDefendCreep =
-        function (energy, roleName) {
+        function(energy, roleName) {
             // create a balanced body as big as possible with the given energy
             var numberOfParts = Math.floor(energy / 140);
             var body = [];
@@ -59,11 +59,10 @@ module.exports = function() {
             return this.createCreep(body, undefined, {
                 role: 'attacker',
                 home: home,
-                target: target,
+                target: target,                
                 working: false
             });
         };
-
     
     // create a new function for StructureSpawn
     StructureSpawn.prototype.createLongDistanceHarvester =
@@ -94,9 +93,4 @@ module.exports = function() {
                 working: false
             });
         };
-    // create a new function for StructureSpawn
-    StructureSpawn.prototype.createClaimer =
-        function (target) {
-            return this.createCreep([CLAIM, MOVE], undefined, { role: 'claimer', target: target });
-        }
 };

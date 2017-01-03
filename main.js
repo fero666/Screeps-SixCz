@@ -8,6 +8,7 @@ var roleWallRepairer = require('role.wallRepairer');
 var roleLongDistanceHarvester = require('role.longDistanceHarvester');
 var roleDefender = require('role.defender');
 var roleAttacker = require('role.attacker');
+var roleClaimer = require('role.claimer');
 
 global.HOME = 'W11N73';
 var TARGET = 'W11N74';
